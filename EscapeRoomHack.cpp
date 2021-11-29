@@ -5,14 +5,18 @@ int main(){
     std::cout << std::endl; 
     std::cout << "You need to enter the correct codes to continue..";
 
-    int a = 4;
-    int b = 3;
-    int c = 2;
-    int sum = a + b + c;
-    int multipliedProduct = a * b * c;
+    int CodeA = 4;
+    int CodeB = 3;
+    int CodeC = 2;
+    int CodesSum = CodeA + CodeB + CodeC;
+    int CodesMultiplied = CodeA * CodeB * CodeC;
 
     std::cout << std::endl;
-    std::cout << multipliedProduct << std::endl;
-    std::cout << sum << std::endl;
+    std::cout << "There are 3 numbers in the code." << std::endl;
+    std::cout << "The codes multiply to give: " << CodesMultiplied << std::endl;
+    std::cout << "The codes add up to: " << CodesSum << std::endl;
+
+    int PlayerGuess;
+    
     return 0;
 }
