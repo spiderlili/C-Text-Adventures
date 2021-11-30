@@ -7,6 +7,8 @@ void PrintIntroduction(){
 }
 
 void PlayGame(){
+    PrintIntroduction();
+
     int CodeA = 4;
     int CodeB = 3;
     int CodeC = 2;
@@ -37,7 +39,8 @@ void PlayGame(){
 }
 
 int main(){
-    PrintIntroduction();
+    while(true){
     PlayGame();
+    }
     return 0;
 }
