@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime> 
 
 void PrintIntroduction(int LevelDifficulty){
     // TODO: Include ASCII Art
@@ -9,9 +10,9 @@ void PrintIntroduction(int LevelDifficulty){
 bool PlayGame(int Difficulty){
     PrintIntroduction(Difficulty);
 
-    int CodeA = 4;
-    int CodeB = 3;
-    int CodeC = 2;
+    int CodeA = rand() % Difficulty + Difficulty;
+    int CodeB = rand() % Difficulty + Difficulty; 
+    int CodeC = rand() % Difficulty + Difficulty;
     int CodesSum = CodeA + CodeB + CodeC;
     int CodesMultiplied = CodeA * CodeB * CodeC;
 
@@ -31,18 +32,20 @@ bool PlayGame(int Difficulty){
     int PlayerGuessMultiplied = PlayerGuessCodeA * PlayerGuessCodeB * PlayerGuessCodeC;
 
     if(PlayerGuessSum == CodesSum && PlayerGuessMultiplied == CodesMultiplied){
-        std::cout << "You win!\n";
+        std::cout << "You win! Moving onto the next level..\n";
         return true;
     }
     else{
-        std::cout << "You lose!\n";
+        std::cout << "You lose! Try again..\n";
         return false;
     }
 }
 
 int main(){
+    srand(time(NULL)); // Randomise the seed for different results based on computer's time
+    const int MaxLevelDifficulty = 10;
     int LevelDifficulty = 1;
-    while (true) // Loop game until all levels are completed
+    while (LevelDifficulty <= MaxLevelDifficulty) // Loop game until all levels are completed
     {
         bool bLevelCompleted = PlayGame(LevelDifficulty);
         std::cin.clear(); // Clears any errors
@@ -53,5 +56,6 @@ int main(){
             ++LevelDifficulty;
         }
     }
+    std::cout << "Congrats! You've beaten the game by completing all levels!";
     return 0;
 }
