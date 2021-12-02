@@ -1,13 +1,13 @@
 #include <iostream>
 
-void PrintIntroduction(){
+void PrintIntroduction(int LevelDifficulty){
     // TODO: Include ASCII Art
-    std::cout << "You are a secret agent breaking into a secure server room\n";
-    std::cout << "You need to enter the correct codes to continue..\n";
+    std::cout << "\nYou are a secret agent breaking into a secure server room located at Level " << LevelDifficulty;
+    std::cout << "\nYou need to enter the correct codes to continue..\n";
 }
 
-void PlayGame(){
-    PrintIntroduction();
+bool PlayGame(int Difficulty){
+    PrintIntroduction(Difficulty);
 
     int CodeA = 4;
     int CodeB = 3;
@@ -32,15 +32,26 @@ void PlayGame(){
 
     if(PlayerGuessSum == CodesSum && PlayerGuessMultiplied == CodesMultiplied){
         std::cout << "You win!\n";
+        return true;
     }
     else{
         std::cout << "You lose!\n";
+        return false;
     }
 }
 
 int main(){
-    while(true){
-    PlayGame();
+    int LevelDifficulty = 1;
+    while (true) // Loop game until all levels are completed
+    {
+        bool bLevelCompleted = PlayGame(LevelDifficulty);
+        std::cin.clear(); // Clears any errors
+        std::cin.ignore(); // Discards the buffer
+
+        if(bLevelCompleted){
+            // Increase level difficulty as the level increases
+            ++LevelDifficulty;
+        }
     }
     return 0;
 }
